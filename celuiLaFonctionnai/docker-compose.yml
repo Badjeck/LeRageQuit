@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  mysql-bdd1:
+    image: mysql:latest
+    retart: always
+    volumes: 
+      - ./init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: helloworld
+      MYSQL_DATABASE: bdChunk
+    env_file:
+      - BddValue.env
+    ports:
+      - "3308:3306"
+      
+        
+  adminer:
+        image: adminer
+        restart: always
+        ports: 
+            - 8080:8080

@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  mysql-bdd1:
+    image: mysql:latest
+    volumes: 
+      - ./init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: helloworld
+      MYSQL_DATABASE: bdChunk
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    ports:
+      - "3308:3306"
+    networks:
+      - oui1
+
+  backup1:
+    image: alpine:latest
+    
+    networks:
+      - oui1
+
+
+
+networks:
+  oui1:
+  oui2:
